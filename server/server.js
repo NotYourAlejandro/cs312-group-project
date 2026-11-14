@@ -4,8 +4,38 @@ const port = 5000;
 
 app.use(express.json());
 
+users = [
+  {
+    id: 1,
+    firstName: "John",
+    lastName: "Doe",
+    email: "john.doe@example.com",
+    passwordHash: "hashed_password_1",
+    profileImage: "https://via.placeholder.com/150",
+    listings: [1],
+  }
+]
+
 // TODO: createplaceholder listing
-listings = [ "a", "b", "c" ];
+listings = [{
+  id: 1,
+  authorId: 1,
+  name: "Test Listing",
+  description: "This is a test listing.",
+  price: 100,
+  images: [
+    "https://via.placeholder.com/150",
+    "https://via.placeholder.com/151",
+  ],
+  reviews: [
+    {
+      authorId: 2,
+      rating: 5,
+      title: "Great listing!",
+      content: "I had a wonderful experience staying at this listing. Highly recommend!"
+    }
+  ]
+}];
 
 app.get("/api/listings", async (req, res) => {
   console.log(listings);
