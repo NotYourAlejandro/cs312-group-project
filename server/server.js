@@ -37,6 +37,8 @@ listings = [{
   ]
 }];
 
+// LISTINGS API //
+
 app.get("/api/listings", async (req, res) => {
   console.log(listings);
   res.json(listings);
@@ -110,6 +112,31 @@ app.delete("/api/listings/:id", async (req, res) => {
   res.json({
     message: "Blog post deleted successfully.",
   });
+});
+
+// USERS API //
+
+app.get("/api/users", async (req, res) => {
+  res.json(users);
+});
+
+app.get("/api/users/:id", async (req, res) => {
+  const id = Number(req.params.id);
+  if (!Number.isInteger(id) || id <= 0) {
+    return res.status(400).json({
+      error: "Invalid user ID.",
+      message: "Please provide a valid user ID.",
+    });
+  }
+
+  const user = users.find((user) => user.id === id);
+  if (!user) {
+    return res.status(404).json({
+      error: "User not found.",
+    });
+  }
+
+  res.json(user);
 });
 
 app.listen(port, () => {

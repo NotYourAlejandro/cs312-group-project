@@ -2,13 +2,13 @@ import React, {useEffect, useState} from 'react'
 import Header from './Header.jsx'
 
 function App() {
-  const [backendData, setBackendData] = useState([{}])
+  const [user, setUser] = useState();
 
   useEffect(() => {
-    fetch("/api/listings").then(
+    fetch("/api/users/1").then(
       response => response.json()
     ).then(
-        data => setBackendData(data)
+        data => setUser(data)
     )
   }, [])
 
@@ -16,10 +16,8 @@ function App() {
     <div>
       <Header
         showSearchBar={true}
-        user={{firstName: "John", lastName: "Doe"}}
+        user={user}
       />
-      <p>hello world</p>
-      <p>{JSON.stringify(backendData)}</p>
     </div>
   );
 }
