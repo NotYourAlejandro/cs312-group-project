@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import Header from './Header.jsx'
 
 function App() {
   const [backendData, setBackendData] = useState([{}])
@@ -13,6 +14,11 @@ function App() {
 
   return (
     <div>
+      <Header
+        showSearchBar={true}
+        user={{firstName: "John", lastName: "Doe"}}
+      />
+      <p>hello world</p>
       <p>{JSON.stringify(backendData)}</p>
     </div>
   );
