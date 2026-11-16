@@ -1,0 +1,488 @@
+/* ================================
+   General listing page
+================================ */
+
+.listing-content {
+  max-width: 1180px;
+  margin: 40px auto 70px;
+  padding: 0 32px;
+  color: slategray;
+  font-family: Arial, sans-serif;
+}
+
+.listing-message {
+  max-width: 1180px;
+  margin: 60px auto;
+  padding: 20px 32px;
+  color: darkslategray;
+  font-size: 18px;
+}
+
+/* ================================
+   Listing heading
+================================ */
+
+.listing-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 26px;
+}
+
+.listing-header h1 {
+  margin: 0 0 12px;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  color: darkslategray;
+}
+
+.listing-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: darkcyan;
+  font-size: 14px;
+}
+
+.listing-rating {
+  color: forestgreen;
+  font-weight: 700;
+}
+
+.listing-host {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: white;
+  border-radius: 12px;
+}
+
+.host-image {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.listing-host div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.host-label {
+  color: slategray;
+  font-size: 12px;
+}
+
+.listing-host strong {
+  color: darkslategray;
+  font-size: 14px;
+}
+
+/* ================================
+   Photo gallery
+================================ */
+
+.listing-gallery {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: repeat(2, 210px);
+  gap: 10px;
+  margin-bottom: 38px;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.gallery-image {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: white;
+}
+
+.gallery-image:first-child {
+  grid-row: span 2;
+}
+
+.gallery-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-image:hover img {
+  transform: scale(1.04);
+}
+
+/* ================================
+   Description and price
+================================ */
+
+.listing-details {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 40px;
+  align-items: start;
+  padding-bottom: 35px;
+  border-bottom: 1px solid mintcream;
+}
+
+.listing-description {
+  padding: 5px 0;
+}
+
+.section-heading h2 {
+  margin: 0;
+  color: darkslategray;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.listing-description p {
+  margin-top: 18px;
+  color: slategray;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.listing-price-card {
+  padding: 22px;
+  background: mintcream;
+  border: 1px solid darkcyan;
+  border-radius: 14px;
+}
+
+.price-label {
+  color: slategray;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.listing-price {
+  margin: 12px 0 0;
+  color: darkslategray;
+  font-size: 29px;
+  font-weight: 700;
+}
+
+.listing-price span {
+  color: darkslategray;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* ================================
+   Reviews
+================================ */
+
+.listing-reviews {
+  padding-top: 35px;
+}
+
+.listing-reviews .section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.review-summary {
+  color: forestgreen;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.review {
+  padding: 22px;
+  background: paleturquoisee;
+  border: 1px solid darkcyan;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px mediumseacream;
+}
+
+.review-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.review h3 {
+  margin: 0;
+  color: darkslategray;
+  font-size: 17px;
+}
+
+.review-stars {
+  color: forestgreen;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.review p {
+  margin: 14px 0 0;
+  color: slategray;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.no-reviews {
+  color: slategray;
+  padding: 20px;
+  background:;
+  border-radius: 10px;
+}
+
+/* ================================
+   Responsive layout
+================================ */
+
+@media (max-width: 800px) {
+  .listing-content {
+    padding: 0 20px;
+  }
+
+  .listing-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .listing-gallery {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(2, 170px);
+  }
+
+  .gallery-image:first-child {
+    grid-row: span 2;
+  }
+
+  .listing-details {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .listing-price-card {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 520px) {
+  .listing-content {
+    margin-top: 25px;
+    padding: 0 15px;
+  }
+
+  .listing-header h1 {
+    font-size: 27px;
+  }
+
+  .listing-gallery {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(2, 125px);
+    gap: 6px;
+    border-radius: 10px;
+  }
+
+  .listing-reviews .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .review-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .review-top {
+    flex-direction: column;
+  }
+}
+
+/* ================================
+   Main site header
+================================ */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  min-height: 76px;
+  padding: 12px 5%;
+  box-sizing: border-box;
+  background: green;
+  box-shadow: 0 2px 8px lime;
+  position: relative;
+  z-index: 10;
+}
+
+.header-logo img {
+  display: block;
+  width: auto;
+  height: 48px;
+  border-radius: 7px;
+}
+
+.header-search {
+  display: flex;
+  align-items: center;
+  width: min(400px, 45%);
+  height: 42px;
+  overflow: hidden;
+  background: white;
+  border-radius: 8px;
+}
+
+.header-search input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0 14px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.header-search button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 100%;
+  padding: 0;
+  border: none;
+  background: mintcream;
+  color: darkgreen;
+  cursor: pointer;
+}
+
+.header-search button:hover {
+  background: paleturquoise;
+}
+
+.header-search svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.header-auth {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-button {
+  padding: 10px 17px;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid lightcyan;
+  border-radius: 7px;
+  transition: background 0.2s ease;
+}
+
+.header-button:hover {
+  background: darkslategray;
+}
+
+.header-button-primary {
+  color: green;
+  background: white;
+  border-color: white;
+}
+
+.header-button-primary:hover {
+  background: mintcream;
+}
+
+.header-profile {
+  position: relative;
+}
+
+.profile-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  overflow: hidden;
+  border: 2px solid white;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.profile-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 150px;
+  margin: 0;
+  padding: 6px 0;
+  list-style: none;
+  background: white;
+  border: 1px solid #e1e6e0;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px darkslategray;
+}
+
+.profile-dropdown a {
+  display: block;
+  padding: 10px 16px;
+  color: green;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.profile-dropdown a:hover {
+  background: mintcream;
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    gap: 12px;
+    padding: 12px 16px;
+  }
+
+  .header-logo img {
+    height: 40px;
+  }
+
+  .header-search {
+    width: auto;
+    flex: 1;
+  }
+
+  .header-auth {
+    gap: 6px;
+  }
+
+  .header-button {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+}

@@ -1,26 +1,18 @@
-import React, {useEffect, useState} from 'react'
-import Header from './Header.jsx'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "./components/Header.jsx";
+import Listing from "./pages/listing.jsx";
+import "./App.css";
 
 function App() {
-  const [backendData, setBackendData] = useState([{}])
-
-  useEffect(() => {
-    fetch("/api/listings").then(
-      response => response.json()
-    ).then(
-        data => setBackendData(data)
-    )
-  }, [])
-
   return (
-    <div>
-      <Header
-        showSearchBar={true}
-        user={{firstName: "John", lastName: "Doe"}}
-      />
-      <p>hello world</p>
-      <p>{JSON.stringify(backendData)}</p>
-    </div>
+    <BrowserRouter>
+      <Header />
+
+      <Routes>
+        <Route path="/" element={<h1>Home Page</h1>} />
+        <Route path="/listings/:id" element={<Listing />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
