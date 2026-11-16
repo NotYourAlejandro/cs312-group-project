@@ -1,5 +1,4 @@
-// core libraries
-const express = require('express')
+const express = require("express");
 const app = express();
 import { Client, Pool } from "pg";
 
@@ -94,7 +93,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // MOCK DATA PREP //
 
-users = [
+const users = [
   {
     id: 1,
     firstName: "John",
@@ -172,7 +171,7 @@ app.post("/api/listings", async (req, res) => {
   });
 });
 
-app.get("/api/listings/:id", async (req, res) => {
+app.get("/api/listings/:id", (req, res) => {
   const id = Number(req.params.id);
 
   if (!Number.isInteger(id) || id <= 0) {
@@ -181,9 +180,27 @@ app.get("/api/listings/:id", async (req, res) => {
     });
   }
 
-  res.json(listings.filter((item) => {
-    item.id == id
-  }));
+  const listing = listings.find((item) => item.id === id);
+
+  if (!listing) {
+    return res.status(404).json({
+      error: "Listing not found.",
+    });
+  }
+
+  const owner = users.find((user) => user.id === listing.authorId);
+
+  res.json({
+    ...listing,
+    owner: owner
+      ? {
+          id: owner.id,
+          firstName: owner.firstName,
+          lastName: owner.lastName,
+          profileImage: owner.profileImage,
+        }
+      : null,
+  });
 });
 
 app.put("/api/listings/:id", async (req, res) => {
@@ -221,7 +238,7 @@ app.delete("/api/listings/:id", async (req, res) => {
   }
 
   listings = listings.filter((listing) => {
-    listing.id != id
+    listing.id != id;
   });
 
   if (result.rows.length === 0) {

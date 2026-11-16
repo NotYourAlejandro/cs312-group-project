@@ -1,5 +1,7 @@
-import React, {useEffect, useState} from 'react'
-import Header from './Header.jsx'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "./components/Header.jsx";
+import Listing from "./pages/listing.jsx";
+import "./App.css";
 
 function App() {
   const [user, setUser] = useState();
@@ -14,12 +16,16 @@ function App() {
   }, [])
 
   return (
-    <div>
+    <BrowserRouter>
       <Header
         showSearchBar={true}
         user={user}
       />
-    </div>
+      <Routes>
+        <Route path="/" element={<h1>Home Page</h1>} />
+        <Route path="/listings/:id" element={<Listing />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
