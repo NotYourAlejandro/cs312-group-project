@@ -5,10 +5,11 @@ function App() {
   const [user, setUser] = useState();
 
   useEffect(() => {
+    // fetch current user info
     fetch("/api/users/1").then(
       response => response.json()
     ).then(
-        data => setUser(data)
+      data => setUser(data)
     )
   }, [])
 
