@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Menu, MenuItem } from "react-router-dom";
 
 const logo = "/logo.png";
 
@@ -117,7 +116,7 @@ export default function Header({ showSearchBar, user }) {
           >
             <img
               src={user.profilePicture}
-              alt="profile picture"
+              alt="profile pic"
             />
           </button>
 
