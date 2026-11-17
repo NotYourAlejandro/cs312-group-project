@@ -1,3 +1,19 @@
+/* Colors Key
+Basic text: slategray
+Header text: darkslategray
+Review Subtext: darkcyan
+Box Background: mintcream
+rating stars/numbers/stars selected: forestgreen
+not selected stars: powderblue
+hr and borders: darkcyan
+button background: green
+button background hover: darkgreen
+button text color: mintcream
+text area focus border: teal
+text area focus shadow: slategray
+box shadows: slategray
+*/
+
 /* ================================
    General listing page
 ================================ */
@@ -244,7 +260,7 @@
 .no-reviews {
   color: slategray;
   padding: 20px;
-  background:;
+  background: mintcream;
   border-radius: 10px;
 }
 
@@ -453,7 +469,7 @@
 .profile-dropdown a {
   display: block;
   padding: 10px 16px;
-  color: green;
+  color: slategray;
   text-decoration: none;
   font-size: 14px;
 }
