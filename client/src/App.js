@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header.jsx";
 import Listing from "./pages/listing.jsx";
 import Home from "./pages/Home.jsx";
-import Profile from "./Profile.jsx";
+import Profile from "./pages/Profile.jsx";
 import CreateReview from "./pages/CreateReview.jsx";
 import "./App.css";
 

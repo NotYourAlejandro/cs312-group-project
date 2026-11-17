@@ -527,11 +527,6 @@ a.listing-host {
   flex-wrap: wrap;
 }
 
-.availability-toggle {
-  margin-top: 22px;
-  font-weight: 600;
-}
-
 .availability-card {
   border: 1px solid darkcyan;
   border-radius: 12px;
@@ -545,8 +540,11 @@ a.listing-host {
   font-weight: 700;
 }
 
-.availability-status {
-  min-height: 24px;
+.booking-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .listing-phone {

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
-import ListingGrid from "./components/ListingGrid";
+import ListingGrid from "../components/ListingGrid";
 
 function Profile({ user: fallbackUser }) {
   const { id } = useParams();
