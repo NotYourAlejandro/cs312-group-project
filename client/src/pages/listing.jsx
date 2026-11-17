@@ -7,6 +7,8 @@ function Listing() {
   const [listing, setListing] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedDate, setSelectedDate] = useState("");
+  const [bookingConfirmed, setBookingConfirmed] = useState(false);
 
   useEffect(() => {
     const fetchListing = async () => {
@@ -61,16 +63,38 @@ function Listing() {
             <span className="listing-rating">
               ★ {propertyRating != null ? propertyRating.toFixed(1) : "New"}
             </span>
-            <span>{reviews.length} reviews</span>
+            <span>{reviews.length} {reviews.length === 1 ? "review" : "reviews"}</span>
+            <div className="description-actions">
+              {listing.phone_number && (
+                <a
+                  href={`tel:${listing.phone_number}`}
+                  className="listing-phone"
+                  aria-label={`Call ${listing.phone_number}`}
+                >
+                  <svg
+                    className="phone-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M6.6 10.8c1.8 3.5 4.7 6.4 8.2 8.2l2.7-2.7c.3-.3.8-.4 1.2-.3 1.3.4 2.7.6 4.2.6.7 0 1.2.5 1.2 1.2V21c0 .7-.5 1.2-1.2 1.2C11.1 22.2 1.8 12.9 1.8 3.2c0-.7.5-1.2 1.2-1.2h3.1c.7 0 1.2.5 1.2 1.2 0 1.5.2 2.9.6 4.2.1.4 0 .9-.3 1.2l-2.7 2.7z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  {listing.phone_number}
+                </a>
+              )}
+            </div>
           </div>
         </div>
 
         {listing.owner && (
-          <div className="listing-host">
+          <Link to={`/profile/${listing.owner.id}`} className="listing-host">
             {listing.owner.profileImage && (
               <img
                 src={listing.owner.profileImage}
-                alt="Host"
+                alt=""
                 className="host-image"
               />
             )}
@@ -85,7 +109,7 @@ function Listing() {
                 ★ {hostRating != null ? hostRating.toFixed(1) : "Not rated yet"}
               </span>
             </div>
-          </div>
+          </Link>
         )}
       </section>
 
@@ -94,7 +118,7 @@ function Listing() {
         <section className="listing-gallery">
           {images.slice(0, 5).map((image, index) => (
             <div className="gallery-image" key={index}>
-              <img src={image} alt={`${listing.name} - Photo ${index + 1}`} />
+              <img src={image} alt={`${listing.name} view ${index + 1}`} />
             </div>
           ))}
         </section>
@@ -108,12 +132,52 @@ function Listing() {
           </div>
 
           <p>{listing.description}</p>
+
+          <div className="card availability-card mt-3">
+            <div className="card-body">
+              <div className="d-flex justify-content-between align-items-center mb-3">
+                <h3 className="availability-title mb-0">Schedule a Meeting</h3>
+                <span className="badge text-bg-light">Calendar</span>
+              </div>
+
+              <input
+                id="listing-date"
+                type="date"
+                className="form-control"
+                aria-label="Choose a booking date"
+                value={selectedDate}
+                min={new Date().toISOString().slice(0, 10)}
+                onChange={(event) => {
+                  setSelectedDate(event.target.value);
+                  setBookingConfirmed(false);
+                }}
+              />
+
+              <div className="booking-actions mt-3">
+                <button
+                  type="button"
+                  className="btn btn-success"
+                  disabled={!selectedDate}
+                  onClick={() => setBookingConfirmed(true)}
+                >
+                  Book time
+                </button>
+                {bookingConfirmed && (
+                  <span className="text-success fw-semibold" role="status" aria-live="polite">
+                    Booking confirmed for {selectedDate}.
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
         </section>
 
         <aside className="listing-price-card">
           <span className="price-label">Price per night</span>
           <p className="listing-price">
-            ${Number(listing.price).toLocaleString()}
+            <span className="listing-price-value">
+              ${Number(listing.price).toLocaleString()}
+            </span>
             <span> / night</span>
           </p>
         </aside>
