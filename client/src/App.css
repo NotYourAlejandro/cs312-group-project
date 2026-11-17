@@ -56,7 +56,7 @@
   align-items: center;
   gap: 12px;
   padding: 10px 16px;
-  background: white;
+  background: mintcream;
   border-radius: 12px;
 }
 
@@ -130,7 +130,7 @@
   gap: 40px;
   align-items: start;
   padding-bottom: 35px;
-  border-bottom: 1px solid mintcream;
+  border-bottom: 1px solid darkcyan;
 }
 
 .listing-description {
@@ -209,7 +209,7 @@
 
 .review {
   padding: 22px;
-  background: paleturquoisee;
+  background: mintcream;
   border: 1px solid darkcyan;
   border-radius: 12px;
   box-shadow: 0 3px 12px mediumseacream;
@@ -367,12 +367,12 @@
   padding: 0;
   border: none;
   background: mintcream;
-  color: darkgreen;
+  color: green;
   cursor: pointer;
 }
 
 .header-search button:hover {
-  background: paleturquoise;
+  background: lightgreen;
 }
 
 .header-search svg {
@@ -389,23 +389,23 @@
 
 .header-button {
   padding: 10px 17px;
-  color: white;
+  color: mintcream;
   text-decoration: none;
   font-size: 14px;
   font-weight: 600;
-  border: 1px solid lightcyan;
+  border: 1px solid mintcream;
   border-radius: 7px;
   transition: background 0.2s ease;
 }
 
 .header-button:hover {
-  background: darkslategray;
+  background: darkgreen;
 }
 
 .header-button-primary {
   color: green;
-  background: white;
-  border-color: white;
+  background: mintcream;
+  border-color: darkcyan;
 }
 
 .header-button-primary:hover {
@@ -424,7 +424,7 @@
   height: 44px;
   padding: 0;
   overflow: hidden;
-  border: 2px solid white;
+  border: 2px solid mintcream;
   border-radius: 50%;
   background: transparent;
   cursor: pointer;
@@ -444,10 +444,10 @@
   margin: 0;
   padding: 6px 0;
   list-style: none;
-  background: white;
-  border: 1px solid #e1e6e0;
+  background: mintcream;
+  border: 1px solid darkcyan;
   border-radius: 8px;
-  box-shadow: 0 5px 15px darkslategray;
+  box-shadow: 0 5px 15px slategray;
 }
 
 .profile-dropdown a {
@@ -485,4 +485,272 @@
     padding: 8px 10px;
     font-size: 12px;
   }
+}
+
+/* Host rating */
+.host-rating {
+  display: block;
+  margin-top: 6px;
+  color: forestgreen;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Amenity ratings section */
+.listing-amenity-ratings {
+  margin: 35px 0;
+}
+
+.listing-amenity-ratings .section-heading {
+  margin-bottom: 18px;
+}
+
+.amenity-rating-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+}
+
+.amenity-rating {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 20px;
+  background-color: mintcream;
+  border: 1px solid darkcyan;
+  border-radius: 10px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.amenity-rating:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px darkslategray;
+}
+
+.amenity-rating strong {
+  color: darkslategray;
+  font-size: 0.95rem;
+}
+
+.amenity-rating span {
+  color: forestgreen;
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.listing-amenity-ratings > p {
+  color: slategray;
+  font-size: 0.95rem;
+}
+
+/* Responsive amenity ratings */
+@media (max-width: 600px) {
+  .amenity-rating-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .amenity-rating {
+    padding: 15px 18px;
+  }
+}
+
+/* Create Review Page */
+.create-review-page {
+  max-width: 850px;
+  margin: 45px auto;
+  padding: 0 25px;
+}
+
+.create-review-container {
+  background: mintcream;
+  padding: 35px;
+  border: 1px solid darkcyan;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px darkslategray;
+}
+
+.create-review-heading {
+  margin-bottom: 30px;
+}
+
+.create-review-heading h1 {
+  color: darkslategray;
+  margin-bottom: 8px;
+}
+
+.create-review-heading p {
+  color: slategray;
+}
+
+.create-review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.review-form-section {
+  padding-bottom: 25px;
+  border-bottom: 1px solid darkcyan;
+}
+
+.review-form-section h2 {
+  color: darkslategray;
+  margin-bottom: 8px;
+  font-size: 1.25rem;
+}
+
+.review-form-section > p {
+  color: slategray;
+  margin-bottom: 16px;
+}
+
+.review-rating-stars {
+  display: flex;
+  gap: 5px;
+}
+
+.star {
+  border: none;
+  background: transparent;
+  color: powderblue;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0 3px;
+  transition:
+    color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.star.selected {
+  color: forestgreen;
+}
+
+.star:hover {
+  transform: scale(1.15);
+}
+
+.amenity-review-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 14px 0;
+  border-bottom: 1px solid darkcyan;
+}
+
+.amenity-review-row strong {
+  color: darkslategray;
+}
+
+.review-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.review-form-group label {
+  color: darkslategray;
+  font-weight: 600;
+}
+
+.review-form-group input,
+.review-form-group textarea {
+  padding: 12px 14px;
+  border: 1px solid darkcyan;
+  border-radius: 8px;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+.review-form-group input:focus,
+.review-form-group textarea:focus {
+  outline: none;
+  border-color: teal;
+  box-shadow: 0 0 0 1px slategray;
+}
+
+.review-form-group textarea {
+  resize: vertical;
+}
+
+.create-review-button {
+  align-self: flex-start;
+  padding: 13px 25px;
+  border: none;
+  border-radius: 8px;
+  background: green;
+  color: Mintcream;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.create-review-button:hover {
+  background: darkgreen;
+}
+
+.create-review-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.create-review-error {
+  padding: 12px 15px;
+  border-radius: 8px;
+  background: mintcream;
+  color: darkslategray;
+  border: 1px solid darkcyan;
+}
+
+@media (max-width: 600px) {
+  .create-review-page {
+    margin: 25px auto;
+    padding: 0 15px;
+  }
+
+  .create-review-container {
+    padding: 22px;
+  }
+
+  .amenity-review-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .create-review-button {
+    width: 100%;
+  }
+}
+
+.write-review-button {
+  display: inline-block;
+  background-color: green;
+  color: mintcream;
+  padding: 10px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  margin: 10px 0 20px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.write-review-button:hover {
+  background-color: darkgreen;
+}
+
+.reviews-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.write-review-button {
+  display: inline-block;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }

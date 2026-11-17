@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Listing() {
   const { id } = useParams();
@@ -43,11 +44,11 @@ function Listing() {
   const reviews = listing.reviews || [];
   const images = listing.images || [];
 
-  const averageRating =
-    reviews.length > 0
-      ? reviews.reduce((total, review) => total + review.rating, 0) /
-        reviews.length
-      : 0;
+  // Get the rating averages calculated by the backend
+  const ratingSummary = listing.ratingSummary || {};
+  const propertyRating = ratingSummary.propertyRating;
+  const hostRating = ratingSummary.hostRating;
+  const amenityRatings = ratingSummary.amenityRatings || {};
 
   return (
     <main className="listing-content">
@@ -58,7 +59,7 @@ function Listing() {
 
           <div className="listing-meta">
             <span className="listing-rating">
-              ★ {averageRating > 0 ? averageRating.toFixed(1) : "New"}
+              ★ {propertyRating != null ? propertyRating.toFixed(1) : "New"}
             </span>
             <span>{reviews.length} reviews</span>
           </div>
@@ -79,6 +80,10 @@ function Listing() {
               <strong>
                 {listing.owner.firstName} {listing.owner.lastName}
               </strong>
+
+              <span className="host-rating">
+                ★ {hostRating != null ? hostRating.toFixed(1) : "Not rated yet"}
+              </span>
             </div>
           </div>
         )}
@@ -114,16 +119,45 @@ function Listing() {
         </aside>
       </div>
 
+      {/* Amenity ratings */}
+      <section className="listing-amenity-ratings">
+        <div className="section-heading">
+          <h2>Amenity ratings</h2>
+        </div>
+
+        {Object.entries(amenityRatings).length === 0 ? (
+          <p>No amenity ratings available yet.</p>
+        ) : (
+          <div className="amenity-rating-grid">
+            {Object.entries(amenityRatings).map(([amenity, rating]) => (
+              <div className="amenity-rating" key={amenity}>
+                <strong>{amenity}</strong>
+                <span>
+                  {rating != null ? `★ ${rating.toFixed(1)}` : "Not rated yet"}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+
       {/* Reviews */}
       <section className="listing-reviews">
         <div className="section-heading">
           <h2>Guest reviews</h2>
           {reviews.length > 0 && (
             <span className="review-summary">
-              ★ {averageRating.toFixed(1)} · {reviews.length} reviews
+              ★ {propertyRating != null ? propertyRating.toFixed(1) : "New"} ·{" "}
+              {reviews.length} reviews
             </span>
           )}
         </div>
+        <Link
+          to={`/listings/${listing.id}/review`}
+          className="write-review-button"
+        >
+          Write a Review
+        </Link>
 
         {reviews.length === 0 ? (
           <p className="no-reviews">
